@@ -25,6 +25,24 @@ func Hello(name string) (string, error) {
 	return message, nil
 }
 
+func Hellos(names []string) (map[string]string, error) {
+	// In Go, you initialize a map with the following syntax: make(map[key-type]value-type)
+	// for more info on maps: https://go.dev/blog/maps
+	messages := make(map[string]string)
+
+	// for loops return 2 values: index in the loop, and copy of the value
+	// since index not needed, the blank identifier is used
+	// for more info on blank identifier: https://go.dev/doc/effective_go.html#blank
+	for _, name := range names {
+		message, err := Hello(name)
+		if err != nil {
+			return nil, err
+		}
+		messages[name] = message
+	}
+	return messages, nil
+}
+
 // https://go.dev/doc/effective_go#init
 // Go calls init functions at program startup after global vars have been initialized
 // so kinda like a ctor for this file

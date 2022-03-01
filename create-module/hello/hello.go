@@ -16,16 +16,19 @@ func main() {
 	log.SetPrefix("greetings: ")
 	log.SetFlags(0)
 
-	name := ""
-	if len(os.Args) > 1 && os.Args[1] != ""{
-		name = os.Args[1]
+	names := []string{}
+	for i, name := range os.Args {
+		// skip first arg, this is a very lazy way to do this lol
+		if i == 0 {continue}
+
+		names = append(names, name)
 	}
 
-	message, err := greetings.Hello(name)
+	greetings, err := greetings.Hellos(names)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(message)
+	fmt.Println(greetings)
 }
