@@ -1,12 +1,22 @@
 package greetings
 
-import "fmt"
+import (
+	"fmt"
+	
+	"errors"
+)
 
-func Hello(name string) string {
+func Hello(name string) (string, error) {
 	// := declares and initializes a variable in one line
 	// it auto detects type based on the value assigned
 	// to delcare separately: var message string
-	message := fmt.Sprintf("Hi, %v. Welcome!", name)
 
-	return message
+	if (name == "") {
+		return "", errors.New("empty name")
+	}
+
+	message := fmt.Sprintf("Hi, %v. Welcome!", name)
+	
+	// nil means no error aka empty value
+	return message, nil
 }
