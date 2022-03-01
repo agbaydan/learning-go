@@ -1,2 +1,2 @@
-# learning-go
-repo containing stuff to learn go 
+# hello world
+lil hello world go app
