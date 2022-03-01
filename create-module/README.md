@@ -1,5 +1,5 @@
 # Create module
 
-App to create and consume a module
+create and consume a module
 
 tutorial: https://go.dev/doc/tutorial/create-module
